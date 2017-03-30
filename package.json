@@ -1,0 +1,20 @@
+{
+  "name": "js-stack",
+  "version": "1.0.0",
+  "description": "a stack about javascript",
+  "main": "index.js",
+  "author": "rayliao",
+  "license": "MIT",
+  "scripts": {
+    "start": "babel-node src",
+    "test": "jest --coverage",
+    "precommit": "yarn test"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-jest": "^19.0.0",
+    "babel-preset-env": "^1.2.2",
+    "husky": "^0.13.3",
+    "jest": "^19.0.2"
+  }
+}
