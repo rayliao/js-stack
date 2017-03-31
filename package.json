@@ -6,15 +6,26 @@
   "author": "rayliao",
   "license": "MIT",
   "scripts": {
-    "start": "babel-node src",
+    "start": "yarn dev:start",
+    "dev:start": "nodemon --ignore lib --exec babel-node src/server",
     "test": "jest --coverage",
-    "precommit": "yarn test"
+    "precommit": "yarn test",
+    "prod:build": "rimraf lib && babel src -d lib --ignore .test.js",
+    "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
+    "prod:stop": "pm2 delete server"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-jest": "^19.0.0",
     "babel-preset-env": "^1.2.2",
+    "cross-env": "^4.0.0",
     "husky": "^0.13.3",
-    "jest": "^19.0.2"
+    "jest": "^19.0.2",
+    "pm2": "^2.4.3",
+    "rimraf": "^2.6.1"
+  },
+  "dependencies": {
+    "compression": "^1.6.2",
+    "express": "^4.15.2"
   }
 }
