@@ -1,0 +1,1 @@
+export const helloEndpointRoute = num => `/ajax/hello/${num || ':num'}`
