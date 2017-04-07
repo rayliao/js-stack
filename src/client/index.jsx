@@ -10,9 +10,16 @@ import Immutable from 'immutable'
 
 import App from '../shared/app'
 import helloReducer from '../shared/reducer/hello'
-import { APP_CONTAINER_SELECTOR } from '../shared/config'
+import { APP_CONTAINER_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
 import setUpSocket from './socket'
+
+import $ from 'jquery'
+import Tether from 'tether'
+
+window.jQuery = $
+window.Tether = Tether
+require('bootstrap')
 
 const composeEnhancers = (isProd ? undefined : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 const preloadedState = window.__PRELOADED_STATE__
@@ -34,6 +41,9 @@ const wrapApp = (AppComponent, reduxStore) =>
     </Provider>
 
 ReactDOM.render(wrapApp(App, store), rootEl)
+
+const jssServerSide = document.querySelector(JSS_SSR_SELECTOR)
+jssServerSide.parentNode.removeChild(jssServerSide)
 
 if (module.hot) {
     module.hot.accept('../shared/app', () => {
