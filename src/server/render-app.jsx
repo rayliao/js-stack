@@ -7,7 +7,12 @@ import { SheetsRegistry, SheetsRegistryProvider } from 'react-jss'
 
 import initStore from './init-store'
 import App from './../shared/app'
-import { APP_CONTAINER_CLASS, STATIC_PATH, WDS_PORT } from '../shared/config'
+import { 
+  APP_CONTAINER_CLASS,
+  STATIC_PATH,
+  WDS_PORT,
+  JSS_SSR_CLASS,
+} from '../shared/config'
 import { isProd } from '../shared/util'
 
 const renderApp = (location, plainPartialState, routerContext = {}) => {
